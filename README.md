@@ -1,0 +1,2 @@
+# CoinStats
+Coin Stats API
