@@ -14,5 +14,6 @@ object Tester {
 //    println(client.getExchanges)
 //    println(client.getMarketsByCoinId("bitcoin"))
     println(client.getTickersByExchangePair("kraken", "BTC-USD"))
+
   }
 }
