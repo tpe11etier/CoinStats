@@ -12,6 +12,7 @@ object Tester {
     //    println(client.getCoinGlobalAvgPrices("bitcoin", "USD"))
 //    println(client.getHistoricalGlobalAvgPriceChart("bitcoin", "1m"))
 //    println(client.getExchanges)
-    println(client.getMarketsByCoinId("bitcoin"))
+//    println(client.getMarketsByCoinId("bitcoin"))
+    println(client.getTickersByExchangePair("kraken", "BTC-USD"))
   }
 }

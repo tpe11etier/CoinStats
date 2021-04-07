@@ -1,6 +1,6 @@
 package com.trp.coinstats.client
 
-import com.trp.coinstats.models.{Coin, Coins, Exchanges, Market}
+import com.trp.coinstats.models.{Coin, Coins, Exchanges, Fiat, Market, Ticker}
 import com.trp.coinstats.{CoinStatsAPI, CoinStatsClient}
 import com.trp.coinstats.utils.JSONPickler._
 
@@ -59,4 +59,17 @@ class CoinStatsClientImpl(api: CoinStatsAPI) extends CoinStatsClient {
 
     get[List[Market]](endpoint = "markets", buildQuery)
   }
+
+  override def getTickersByExchangePair(exchange: String, pair: String): Map[String,List[Ticker]] = {
+    def buildQuery = {
+      Map(
+        "exchange" -> exchange,
+        "pair" -> pair
+      )
+    }
+      get[Map[String, List[Ticker]]](endpoint = "tickers", buildQuery)
+
+  }
+
+  override def getFiats: List[Fiat] = ???
 }
