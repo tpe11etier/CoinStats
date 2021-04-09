@@ -1,6 +1,6 @@
 package com.trp.coinstats
 
-import com.trp.coinstats.models.{Coin, Coins, Exchanges, Fiat, Market, Ticker}
+import com.trp.coinstats.models.{Coin, Coins, Exchanges, Fiat, Market, News, Ticker}
 
 trait CoinStatsClient {
   def getCoinsGlobalAvgPrices: Coins
@@ -18,4 +18,8 @@ trait CoinStatsClient {
   def getTickersByExchangePair(exchange: String, pair: String): Map[String,List[Ticker]]
 
   def getFiats: List[Fiat]
+
+  def getNews: Map[String, List[News]]
+
+  def getNews(skip: Option[Int], limit:Option[Int], fromDate: Option[Long], toDate: Option[Long]): Map[String, List[News]]
 }

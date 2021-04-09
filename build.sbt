@@ -5,7 +5,6 @@ version := "0.1"
 scalaVersion := "2.13.5"
 
 scalacOptions ++= Seq("-deprecation", "-feature", "-language:postfixOps")
-scalacOptions += "-Ypartial-unification"
 
 libraryDependencies ++= Seq("com.lihaoyi" %% "requests" % "0.6.5",
                             "com.lihaoyi" %% "upickle" % "1.3.0",

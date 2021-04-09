@@ -1,6 +1,6 @@
 package com.trp.coinstats.client
 
-import com.trp.coinstats.models.{Coin, Coins, Exchanges, Fiat, Market, Ticker}
+import com.trp.coinstats.models.{Coin, Coins, Exchanges, Fiat, Market, News, Ticker}
 import com.trp.coinstats.{CoinStatsAPI, CoinStatsClient}
 import com.trp.coinstats.utils.JSONPickler._
 
@@ -71,5 +71,25 @@ class CoinStatsClientImpl(api: CoinStatsAPI) extends CoinStatsClient {
 
   }
 
-  override def getFiats: List[Fiat] = ???
+  override def getFiats: List[Fiat] = {
+    get[List[Fiat]](endpoint = "fiats",Map())
+  }
+
+  override def getNews: Map[String, List[News]] = {
+    getNews(None, None, None, None)
+  }
+
+  override def getNews(skip: Option[Int], limit: Option[Int], fromDate: Option[Long], toDate: Option[Long]): Map[String, List[News]] = {
+    def buildQuery: Map[String, String] =
+      Map(
+        "skip" -> skip.toString,
+        "limit" -> limit.toString,
+        "fromDate" -> fromDate.toString,
+        "toDate" -> toDate.toString
+      ).filter(kv => kv._2.nonEmpty)
+          .map(kv => kv._1 -> kv._2)
+
+    get[Map[String, List[News]]](endpoint = "news", buildQuery)
+
+  }
 }
