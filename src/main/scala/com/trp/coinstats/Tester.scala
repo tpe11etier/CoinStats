@@ -1,6 +1,7 @@
 package com.trp.coinstats
 
 import com.trp.coinstats.client.CoinStatsClientImpl
+import com.trp.coinstats.utils.PPrintUtils
 
 object Tester {
   def main(args: Array[String]): Unit = {
@@ -16,6 +17,6 @@ object Tester {
     //    println(client.getTickersByExchangePair("kraken", "BTC-USD"))
     //    println(client.getFiats)
     val news = client.getNews
-//news.map(_._2).foreach(x => x.map(n => println(n.title, n.link)))
+    val title, link =  news.values.foreach(x => x.map(n => PPrintUtils.pprint2.pprintln(n)))
   }
 }
